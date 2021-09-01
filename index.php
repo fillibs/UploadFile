@@ -22,60 +22,57 @@
 					</div>
 				</div>
 			</div>
-
+			<form action="upload.php" method="POST" enctype="multipart/form-data" class="body" >
 			<!-- Form Upload -->
-			<form>
 				<legend>อัพโหลด</legend>
 
 				<!-- Dropdown Types -->
+				<label for="type" class="form-label">ประเภท</label>
 				<div class="mb-3">
-					<label for="type" class="form-label">ประเภท</label>
-					<select id="type" class="form-select">
+					<select id="type" class="form-select" name = "meeting">
 						<option value="report">รายงานการประชุมประจำเดือน</option>
 						<option value="term">วาระการประชุมประจำเดือน</option>
 					</select>
 				</div>
 
 				<!-- Dropdown Months -->
-				<div class="mb-3">
 					<label for="month" class="form-label">เดือน</label>
-					<select id="month" class="form-select">
-						<option value="1">มกราคม</option>
-						<option value="2">กุมภาพันธ์</option>
-						<option value="3">มีนาคม</option>
-						<option value="4">เมษายน</option>
-						<option value="5">พฤษภาคม</option>
-						<option value="6">มิถุนายน</option>
-						<option value="7">กรกฎาคม</option>
-						<option value="8">สิงหาคม</option>
-						<option value="9">กันยายน</option>
-						<option value="10">ตุลาคม</option>
-						<option value="11">พฤศจิกายน</option>
-						<option value="12">ธันวาคม</option>
-					</select>
-				</div>
+					<div class="mb-3">
+						<select id="month" class="form-select" name = "months">
+							<option value="มกราคม">มกราคม</option>
+							<option value="กุมภาพันธ์">กุมภาพันธ์</option>
+							<option value="มีนาคม">มีนาคม</option>
+							<option value="เมษายน">เมษายน</option>
+							<option value="พฤษภาคม">พฤษภาคม</option>
+							<option value="มิถุนายน">มิถุนายน</option>
+							<option value="กรกฎาคม">กรกฎาคม</option>
+							<option value="สิงหาคม">สิงหาคม</option>
+							<option value="กันยายน">กันยายน</option>
+							<option value="ตุลาคม">ตุลาคม</option>
+							<option value="พฤศจิกายน">พฤศจิกายน</option>
+							<option value="ธันวาคม">ธันวาคม</option>
+						</select>
+					</div>
 
 				<!-- Dropdown Years -->
-				<div class="mb-3">
 					<label for="years" class="form-label">ปี</label>
-					<select id="years" class="form-select">
-						<option value="1">2561</option>
-						<option value="2">2562</option>
-						<option value="3">2563</option>
-						<option value="4">2564</option>
-						<option value="5">2565</option>
+					<div class="mb-3">
+					<select id="years" class="form-select" name="years">
+						<option value="2561">2561</option>
+						<option value="2562">2562</option>
+						<option value="2563">2563</option>
+						<option value="2564">2564</option>
+						<option value="2565">2565</option>
 					</select>
-				</div>
-
+					</div>
+				
 				<!-- Input Change Name -->
 				<label class="form-label">ชื่อหัวข้อ</label>
-				<div class="mb-3">
-					<input type="email" class="form-control" id="name" placeholder="ครั้งที่ - / ปี -">
-				</div>
-			</form>
+					<div class="mb-3">
+						<input type="text" class="form-control" id="name" name="new_name" placeholder="ครั้งที่ - / ปี -">
+					</div>
 			
 				<!-- Upload PDF Files -->
-				<form action="upload.php" method="POST" enctype="multipart/form-data" class="body">
 					<label id="file" class="form-label">อัพโหลดไฟล์</label>
 					<div class="mb-3">
 						<input type="file" name="file" id="upload" required>
