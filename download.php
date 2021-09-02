@@ -11,9 +11,8 @@
 <body>
 <?php 
     include 'config.php';
-    $query = "SELECT new_name FROM uploaded_files";
-    $result = mysqli_query($conn, $query) or die("Error in sql : $query".
-    mysqli_error($query));
+    $query = "SELECT name,month,years FROM uploaded_files";
+    $result = mysqli_query($conn, $query);
 ?>
 <div class="container-xl">
 	<div class="table-responsive">
@@ -30,7 +29,9 @@
 			</div>
 			
 			<table class="table table-striped table-hover">
-			<label class="form-label" style="color:red; font-size:160%; font-weight: bold";>ปี 2561</label>
+
+			<?php foreach ($result as $row) {?>
+			<label class="form-label" style="color:red; font-size:160%; font-weight: bold";>ปี <?php echo $row['years']; ?></label>
 				<thead>
 					<th scope="col">เดือน</th>
 					<th scope="col">ชื่อไฟล์</th>
@@ -40,16 +41,17 @@
 				<tbody>
 					<?php foreach ($result as $row) {?>
 					<tr>
-					<td>month</td>
-						<td><?php echo $row['new_name']; ?> </td>
+					<td><?php echo $row['month']; ?></td>
+						<td><?php echo $row['name']; ?> </td>
 							<td>
 								<button type="button" class="btn btn-warning btn-sm px-3">
-									<a href="uploads/<?php echo $row['new_name']; ?>" download>ดาวน์โหลด</a>
+									<a href="uploads/<?php echo $row['name']; ?>" download>ดาวน์โหลด</a>
 								</button>
 							</td>
 					</tr>
 					<?php } ?>   
 				</tbody>
+			<?php } ?>  
 			</table>
 
 		</div>

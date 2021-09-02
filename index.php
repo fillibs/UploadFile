@@ -65,12 +65,6 @@
 						<option value="2565">2565</option>
 					</select>
 					</div>
-				
-				<!-- Input Change Name -->
-				<label class="form-label">ชื่อหัวข้อ</label>
-					<div class="mb-3">
-						<input type="text" class="form-control" id="name" name="new_name" placeholder="ครั้งที่ - / ปี -">
-					</div>
 			
 				<!-- Upload PDF Files -->
 					<label id="file" class="form-label">อัพโหลดไฟล์</label>
