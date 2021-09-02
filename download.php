@@ -14,21 +14,98 @@
     $query = "SELECT name,month,years FROM uploaded_files";
     $result = mysqli_query($conn, $query);
 ?>
+
+<!-- ค้นหารายงานการประชุมประจำเดือน -->
 <div class="container-xl">
 	<div class="table-responsive">
+	<div class="col-sm-6" style="margin-bottom: 20px;">
+		<a href="\uploads\index.php" class="btn btn-success btn-sm px-3" data-toggle="modal"><span>อัพโหลด</span></a>						
+	</div>
 		<div class="table-wrapper">
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
 						<h2><b>รายงานการประชุมประจำเดือน</b></h2>
 					</div>
+				</div>
+			</div>
+			
+			<table class="table table-striped table-hover">
+
+			<legend>ค้นหารายงานการประชุมประจำเดือน</legend>
+
+			<label for="years" class="form-label">ปี</label>
+				<div class="mb-3">
+					<select id="years" class="form-select" name="years">
+						<option value="2561">2561</option>
+						<option value="2562">2562</option>
+						<option value="2563">2563</option>
+						<option value="2564">2564</option>
+						<option value="2565">2565</option>
+					</select>
+				</div>
+				<div class="col-sm-6 magin" style="margin-bottom: 20px;">
+					<a href="" class="btn btn-info btn-sm px-3" data-toggle="modal"><span>ค้นหา</span></a>						
+				</div>
+
+			<?php foreach ($result as $row) {?>
+			<label class="form-label" style="color:red; font-size:160%; font-weight: bold";>ปี <?php echo $row['years']; ?></label>
+				<thead>
+					<th scope="col">เดือน</th>
+					<th scope="col">ชื่อไฟล์</th>
+					<th scope="col" style="text-align:center;">ดาวน์โหลด</th>
+				</thead>
+
+				<tbody>
+					<?php foreach ($result as $row) {?>
+					<tr>
+					<td><?php echo $row['month']; ?></td>
+						<td><?php echo $row['name']; ?> </td>
+							<td>
+								<button type="button" class="btn btn-warning btn-sm px-3">
+									<a href="uploads/<?php echo $row['name']; ?>" download>ดาวน์โหลด</a>
+								</button>
+							</td>
+					</tr>
+					<?php } ?>   
+				</tbody>
+			<?php } ?>  
+			</table>
+
+		</div>
+	</div>        
+</div>
+
+<!-- ค้นหาวาระการประชุมประจำเดือน -->
+
+<div class="container-xl">
+	<div class="table-responsive">
+		<div class="table-wrapper">
+			<div class="table-title">
+				<div class="row">
 					<div class="col-sm-6">
-						<a href="\uploads\index.php" class="btn btn-success btn-sm px-3" data-toggle="modal"><span>อัพโหลด</span></a>						
+						<h2><b>วาระการประชุมประจำเดือน</b></h2>
 					</div>
 				</div>
 			</div>
 			
 			<table class="table table-striped table-hover">
+
+			<legend>ค้นหาวาระการประชุมประจำเดือน</legend>
+
+			<label for="years" class="form-label">ปี</label>
+				<div class="mb-3">
+					<select id="years" class="form-select" name="years">
+						<option value="2561">2561</option>
+						<option value="2562">2562</option>
+						<option value="2563">2563</option>
+						<option value="2564">2564</option>
+						<option value="2565">2565</option>
+					</select>
+				</div>
+				<div class="col-sm-6 magin" style="margin-bottom: 20px;">
+					<a href="" class="btn btn-info btn-sm px-3" data-toggle="modal"><span>ค้นหา</span></a>						
+				</div>
 
 			<?php foreach ($result as $row) {?>
 			<label class="form-label" style="color:red; font-size:160%; font-weight: bold";>ปี <?php echo $row['years']; ?></label>

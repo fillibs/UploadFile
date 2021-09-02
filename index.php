@@ -15,7 +15,7 @@
 			<div class="table-title">
 				<div class="row">
                     <div class="col-sm-6">
-						<h2><b>รายงานและวาระการประชุมประจำเดือน</b></h2>
+						<h2><b>เพิ่มรายงานและวาระการประชุมประจำเดือน</b></h2>
                     </div>
                     <div class="col-sm-6">
 						<a href="\uploads\download.php" class="btn btn-warning btn-sm px-3" data-toggle="modal"><span>ดาวน์โหลด</span></a>						
