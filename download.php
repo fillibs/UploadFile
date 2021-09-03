@@ -61,15 +61,12 @@
 			}
 			$start = ($page - 1) * $perpage;
 
-			//$years = $_POST['years'];
+			$years = $_POST['years'];
 			$sql = "SELECT month, name FROM uploaded_files
 			where  type = 1 limit {$start} , {$perpage} ";
 			
 			
-			$sql2 = "SELECT month, name FROM uploaded_files
-			where  type = 2 limit {$start} , {$perpage} ";
-
-			
+	
 			$result = $conn->query($sql);
 			
 			?>
