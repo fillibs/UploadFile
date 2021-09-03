@@ -9,10 +9,11 @@
  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
 <?php 
     include 'config.php';
-    $query = "SELECT name,month,years FROM uploaded_files";
-    $result = mysqli_query($conn, $query);
+    //$query = "SELECT name,month,years FROM uploaded_files";
+    //$result = mysqli_query($conn, $query);
 ?>
 
 <!-- ค้นหารายงานการประชุมประจำเดือน -->
@@ -33,8 +34,9 @@
 			<table class="table table-striped table-hover">
 
 			<legend>ค้นหารายงานการประชุมประจำเดือน</legend>
-
+			
 			<label for="years" class="form-label">ปี</label>
+			<form action="download.php" method="POST" enctype="multipart/form-data" class="body" >
 				<div class="mb-3">
 					<select id="years" class="form-select" name="years">
 						<option value="2561">2561</option>
@@ -45,9 +47,32 @@
 					</select>
 				</div>
 				<div class="col-sm-6 magin" style="margin-bottom: 20px;">
-					<a href="" class="btn btn-info btn-sm px-3" data-toggle="modal"><span>ค้นหา</span></a>						
+					<button class="btn btn-info btn-sm px-3" data-toggle="modal" type="submit"><span>ค้นหา</span></button>						
 				</div>
+			</form>
 
+			<?php 
+
+			$perpage = 5;
+			if (isset($_GET['page'])) {
+			$page = $_GET['page'];
+			} else {
+			$page = 1;
+			}
+			$start = ($page - 1) * $perpage;
+
+			//$years = $_POST['years'];
+			$sql = "SELECT month, name FROM uploaded_files
+			where  type = 1 limit {$start} , {$perpage} ";
+			
+			
+			$sql2 = "SELECT month, name FROM uploaded_files
+			where  type = 2 limit {$start} , {$perpage} ";
+
+			
+			$result = $conn->query($sql);
+			
+			?>
 			<?php foreach ($result as $row) {?>
 			<label class="form-label" style="color:red; font-size:160%; font-weight: bold";>ปี <?php echo $row['years']; ?></label>
 				<thead>
@@ -71,6 +96,30 @@
 				</tbody>
 			<?php } ?>  
 			</table>
+
+			<?php
+			$sql2 = "select * from uploaded_files where  type = 1 ";
+			$query2 =  $conn->query($sql2);
+			$total_record = mysqli_num_rows($query2);
+			$total_page = ceil($total_record / $perpage);
+			?>
+			<nav aria-label="Page navigation example" class="d-flex justify-content-center">
+				<ul class="pagination">
+				<li class="page-item">
+				<a class="page-link" href="download.php?page=1" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				</a>
+				</li>
+				<?php for($i=1;$i<=$total_page;$i++){ ?>
+				<li class="page-item"><a class="page-link" href="download.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+				<?php } ?>
+				<li class="page-item">
+				<a class="page-link" href="download.php?page=<?php echo $total_page;?>" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				</a>
+				</li>
+			</ul>
+			</nav>
 
 		</div>
 	</div>        
@@ -132,7 +181,8 @@
 			</table>
 
 		</div>
-	</div>        
+	</div>
+	<script src="bootstrap/js/bootstrap.min.js"></script>        
 </div>
 </body>
 </html>
