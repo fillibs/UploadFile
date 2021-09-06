@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +12,13 @@
 </head>
 <body>
 <div class="container-xl">
+	<div class="col-sm-6" style="margin-top: 25px;">
+		<?php 
+			if (!$_SESSION["ID"]){	
+				session_destroy();?>
+				<a href="\uploads\login.php" class="btn btn-outline-danger btn-sm px-3" data-toggle="modal"><span>ออกจากระบบ</span></a>	
+		<?php }?>					
+	</div>
 	<div class="table-responsive">
 		<div class="table-wrapper">
 			<div class="table-title">
