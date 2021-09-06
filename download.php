@@ -61,8 +61,17 @@
 			$page = 1;
 			}
 			$start = ($page - 1) * $perpage;
+			
+			$current = date("Y");
 
-			$years = $_POST['years'];
+			if($_POST['years'] != null){
+				$years = $_POST['years'];
+			} else {
+				$years = $current + 543;
+			}
+
+			
+			//$years = $_POST['years'];
 			$sql = "SELECT month,name,new_name FROM uploaded_files
 			where years = '".$years. "' and type = 1 limit {$start} , {$perpage} ";
 
