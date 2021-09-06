@@ -10,6 +10,7 @@ if (isset($_POST['upload'])) {
 
 	$months = $_POST['months'];
 	$years = $_POST['years'];
+	$new_name = $_POST['new_name'];
 	
 	if($_POST['meeting'] == 'report'){
 		$meeting = "1";
@@ -21,8 +22,8 @@ if (isset($_POST['upload'])) {
 	if ($file_size > 10485760) {
 		echo "<script>alert('ขนาดไฟล์ที่คุณอัพโหลดเกิน 10 MB.')</script>";
 	} else {
-		$sql = "INSERT INTO uploaded_files (name,month,years,type)
-				VALUES ('$file_name','$months','$years','$meeting')";
+		$sql = "INSERT INTO uploaded_files (name,new_name,month,years,type)
+				VALUES ('$file_name','$new_name','$months','$years','$meeting')";
 		$result = mysqli_query($conn, $sql);
 		if ($result) {
 			move_uploaded_file($file_temp, $location . $file_name);
@@ -39,7 +40,7 @@ if (isset($_POST['upload'])) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+<title>อัพโหลดข้อมูล</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
  <link rel="stylesheet" type="text/css" href="style.css">
@@ -47,7 +48,7 @@ if (isset($_POST['upload'])) {
 <body>
 <?php 
     include 'config.php';
-    $query = "SELECT name FROM uploaded_files";
+    $query = "SELECT name,new_name FROM uploaded_files ORDER BY id DESC LIMIT 1 ";
     $result = mysqli_query($conn, $query);
 ?>
 <div class="container-xl">
@@ -64,9 +65,16 @@ if (isset($_POST['upload'])) {
 				</div>
 			</div>
 			<label for="type" class="form-label"></label>
-				<div class="container mb-3">
-						คุณได้อัพโหลดไฟล์ 
+			<?php foreach ($result as $row) { ?>
+				<div class="container mb-2" style="text-align:center;">
+					<div style="font-size: 25px;">
+						คุณได้อัพโหลดไฟล์
+					</div>	
+					<div style="color: red; font-size: 18px;">
+						<?php echo $row['new_name']; ?>
+					</div>	
 				</div>
+			<?php } ?>
 		</div>
 	</div>        
 </div>

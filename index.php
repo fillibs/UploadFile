@@ -23,6 +23,7 @@
 				</div>
 			</div>
 			<form action="upload.php" method="POST" enctype="multipart/form-data" class="body" >
+
 			<!-- Form Upload -->
 				<legend>อัพโหลด</legend>
 
@@ -64,6 +65,14 @@
 						<option value="2564">2564</option>
 						<option value="2565">2565</option>
 					</select>
+					</div>
+
+				<!-- Input New Name -->
+					<label id="new_name" for="new_name" class="form-label">ตั้งชื่อไฟล์</label>
+					<div class="mb-3">
+						<div class="form-group">
+							<input type="text" class="form-control" name="new_name" id="new_name" required>
+						</div>
 					</div>
 			
 				<!-- Upload PDF Files -->

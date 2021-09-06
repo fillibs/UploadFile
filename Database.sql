@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2021 at 06:14 AM
+-- Generation Time: Sep 06, 2021 at 05:39 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `file_upload_tutorial`
+-- Database: `file_upload`
 --
 
 -- --------------------------------------------------------
@@ -31,8 +31,9 @@ CREATE TABLE `uploaded_files` (
   `id` int(11) NOT NULL,
   `type` int(10) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `new_name` varchar(255) NOT NULL,
+  `new_name` text CHARACTER SET utf8 NOT NULL,
   `month` varchar(30) NOT NULL,
+  `years` int(30) NOT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -40,8 +41,8 @@ CREATE TABLE `uploaded_files` (
 -- Dumping data for table `uploaded_files`
 --
 
-INSERT INTO `uploaded_files` (`id`, `type`, `name`, `new_name`, `month`, `date`) VALUES
-(98, 0, '27082116300503335408736-one-piece-chibi-png-image-one-piece-luffy-chibi-free-luffy-png-820_960_preview (2).png', '010921163046930327082116300503335408736-one-piece-chibi-png-image-one-piece-luffy-chibi-free-luffy-png-820_960_preview (2).png', '', '2021-09-01 11:08:23');
+INSERT INTO `uploaded_files` (`id`, `type`, `name`, `new_name`, `month`, `years`, `date`) VALUES
+(248, 1, '1_6130200404__1.pdf', 'ครั้งที่ 6 / 2561', 'มกราคม', 2561, '2021-09-06 10:34:05');
 
 --
 -- Indexes for dumped tables
@@ -61,7 +62,7 @@ ALTER TABLE `uploaded_files`
 -- AUTO_INCREMENT for table `uploaded_files`
 --
 ALTER TABLE `uploaded_files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
