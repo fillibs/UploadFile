@@ -3,7 +3,7 @@
 error_reporting(0);
 $server = "localhost";
 $username = "root";
-$password = "123456789";
+$password = "";
 $database = "file_upload_tutorial";
 
 $conn = mysqli_connect($server, $username, $password, $database);

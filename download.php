@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+<title>ค้นหารายงานและวาระการประชุมประจำเดือน</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
- <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
@@ -19,9 +19,6 @@
 <!-- ค้นหารายงานการประชุมประจำเดือน -->
 <div class="container-xl">
 	<div class="table-responsive">
-	<div class="col-sm-6" style="margin-bottom: 20px;">
-		<a href="\uploads\index.php" class="btn btn-success btn-sm px-3" data-toggle="modal"><span>อัพโหลด</span></a>						
-	</div>
 		<div class="table-wrapper">
 			<div class="table-title">
 				<div class="row">
@@ -70,7 +67,6 @@
 				$years = $current + 543;
 			}
 
-			
 			//$years = $_POST['years'];
 			$sql = "SELECT month,name,new_name FROM uploaded_files
 			where years = '".$years. "' and type = 1 limit {$start} , {$perpage} ";
@@ -140,19 +136,27 @@
 
 			<?php 
 
-			$perpage = 12;
-			if (isset($_GET['page'])) {
-			$page = $_GET['page'];
-			} else {
-			$page = 1;
-			}
-			$start = ($page - 1) * $perpage;
+				$perpage = 12;
+				if (isset($_GET['page'])) {
+				$page = $_GET['page'];
+				} else {
+				$page = 1;
+				}
+				$start = ($page - 1) * $perpage;
 
-			$years = $_POST['years'];
-			$sql = "SELECT month,name,new_name FROM uploaded_files
-			where years = '".$years. "' and type = 2 limit {$start} , {$perpage} ";
+				$current = date("Y");
 
-			$result = $conn->query($sql);
+				if($_POST['years'] != null){
+					$years = $_POST['years'];
+				} else {
+					$years = $current + 543;
+				}
+
+				//$years = $_POST['years'];
+				$sql = "SELECT month,name,new_name FROM uploaded_files
+				where years = '".$years. "' and type = 2 limit {$start} , {$perpage} ";
+
+				$result = $conn->query($sql);
 			
 			?>
 			<?php foreach ($result as $row) {?>

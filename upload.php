@@ -61,7 +61,8 @@ if (isset($_POST['upload'])) {
 					</div>
 					<div class="col-sm-6">
 						<a href="\uploads\index.php" class="btn btn-danger btn-sm px-3" data-toggle="modal" onClick="javascript:history.go(-1)"><span>ย้อนกลับ</span></a>						
-					</div>
+						<a href="\uploads\download.php" class="btn btn-warning btn-sm px-3" data-toggle="modal"><span>ดาวน์โหลด</span></a>						
+					</div>		
 				</div>
 			</div>
 			<label for="type" class="form-label"></label>
