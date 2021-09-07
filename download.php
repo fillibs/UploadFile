@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<?php 
+<?php
     include 'config.php';
     //$query = "SELECT name,month,years FROM uploaded_files";
     //$result = mysqli_query($conn, $query);
@@ -18,14 +18,23 @@
 
 <!-- ค้นหารายงานการประชุมประจำเดือน -->
 <div class="container-xl">
+
 	<div class="col-sm-6" style="margin-top: 25px;">
-		<?php 
-			if (!$_SESSION["ID"]){	
-				session_destroy();?>
-				<a href="\uploads\login.php" class="btn btn-outline-danger btn-sm px-3" data-toggle="modal"><span>ออกจากระบบ</span></a>	
-		<?php }?>
-									
+		<?php
+			session_start();
+			include('config.php');
+
+			$ID = $_SESSION['userID'];
+			$name = $_SESSION['name'];
+			$level = $_SESSION['level'];
+				if($level!='admin'){
+				Header("Location: logout.php");
+				session_destroy();
+			}
+		?>
+			<a href="\uploads\logout.php" class="btn btn-outline-danger btn-sm px-3" data-toggle="modal"><span>ออกจากระบบ</span></a>						
 	</div>
+
 	<div class="table-responsive">
 		<div class="table-wrapper">
 			<div class="table-title">
@@ -190,9 +199,14 @@
 				</tbody>
 			<?php } ?>  
 			</table>
-
 		</div>
-	</div>        
+	</div> 
+
 </div>
+	<div>
+		<a href="#" class="cd-top text-replace js-cd-top btn btn-dark btn-lg px-3" style="margin-left: 1430px; margin-bottom: 20px; font-size: 15px;">
+		<div>^</div>ข้างบน</a>
+	</div>
+
 </body>
 </html>

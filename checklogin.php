@@ -13,13 +13,13 @@ session_start();
                   if(mysqli_num_rows($result)==1){
                       $row = mysqli_fetch_array($result);
 
-                      $_SESSION["ID"] = $row["ID"];
+                      $_SESSION["userID"] = $row["userID"];
                       $_SESSION["name"] = $row["name"];
                       $_SESSION["level"] = $row["level"];
 
                       if($_SESSION["level"]=="admin"){ 
 
-                        Header("Location: index.php");
+                        Header("Location: index_upload.php");
                       }
                   if ($_SESSION["level"]=="member"){ 
 
@@ -34,7 +34,7 @@ session_start();
                   }
         }else{
 
-             Header("Location: index.php"); //user & password incorrect back to login again
+             Header("Location: index_upload.php"); //รหัสไม่ถูกต้องจะย้อนกลับมา
  
         }
 ?>
