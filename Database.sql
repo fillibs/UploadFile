@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2021 at 05:39 AM
+-- Generation Time: Sep 07, 2021 at 08:46 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -18,8 +18,30 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `file_upload`
+-- Database: `file_upload_tutorial`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login`
+--
+
+CREATE TABLE `login` (
+  `userID` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `level` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`userID`, `username`, `password`, `name`, `level`) VALUES
+(1, '111', '111', 'FILLIBs', 'admin'),
+(2, '222', '222', 'prayuth', 'member');
 
 -- --------------------------------------------------------
 
@@ -38,15 +60,14 @@ CREATE TABLE `uploaded_files` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `uploaded_files`
---
-
-INSERT INTO `uploaded_files` (`id`, `type`, `name`, `new_name`, `month`, `years`, `date`) VALUES
-(248, 1, '1_6130200404__1.pdf', 'ครั้งที่ 6 / 2561', 'มกราคม', 2561, '2021-09-06 10:34:05');
-
---
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`userID`);
 
 --
 -- Indexes for table `uploaded_files`
@@ -62,7 +83,7 @@ ALTER TABLE `uploaded_files`
 -- AUTO_INCREMENT for table `uploaded_files`
 --
 ALTER TABLE `uploaded_files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=268;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
