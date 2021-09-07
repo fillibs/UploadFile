@@ -27,7 +27,7 @@
 			$ID = $_SESSION['userID'];
 			$name = $_SESSION['name'];
 			$level = $_SESSION['level'];
-				if($level!='admin'){
+				if($level!='admin' and $level!= "member" ){
 				Header("Location: logout.php");
 				session_destroy();
 			}
